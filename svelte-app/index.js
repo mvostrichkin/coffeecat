@@ -1,7 +1,7 @@
 const http = require('http');
 const mongoose = require('mongoose');
 
-const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/test';
+const mongoUri = process.env.MONGODB_URI || 'mongodb://mongodb:27017/test';
 
 mongoose.connect(mongoUri).then(
     () => console.log('Connected to MongoDB')
