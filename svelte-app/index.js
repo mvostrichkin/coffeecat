@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 
 const mongoUri = process.env.MONGODB_URI || 'mongodb://mongodb:27017/test';
 
+console.log(mongoUri);
+
 mongoose.connect(mongoUri).then(
     () => console.log('Connected to MongoDB')
 ).catch(
