@@ -1,0 +1,7 @@
+coffeecat.shop {
+	basic_auth {
+		${CADDY_AUTH_USERNAME} "${CADDY_AUTH_PASSWORD}"
+	}
+
+	reverse_proxy svelte-app:3000
+}
