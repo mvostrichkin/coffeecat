@@ -1,6 +1,6 @@
 coffeecat.shop {
 	basic_auth {
-		${CADDY_AUTH_USERNAME} ${CADDY_AUTH_PASSWORD}
+		${CADDY_AUTH_USERNAME} $2a$14$AIeVLcFmUBL6sfmwRm/Ll.OZNQm3oAzRpkSa640muTsvCAIPBOtM6
 	}
 
 	reverse_proxy svelte-app:3000

@@ -8,7 +8,6 @@ services:
     environment:
       - DOMAIN_NAME=${DOMAIN_NAME}
       - CADDY_AUTH_USERNAME=${CADDY_AUTH_USERNAME}
-      - CADDY_AUTH_PASSWORD=${CADDY_AUTH_PASSWORD}
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
