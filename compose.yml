@@ -20,7 +20,7 @@ services:
     build: ./svelte-app
     restart: always
     environment:
-      - MONGODB_URI=mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@mongodb:27017/?authSource=admin
+      - MONGODB_URI=mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@mongodb:27017/main?authSource=admin
     depends_on:
       - mongodb
   
