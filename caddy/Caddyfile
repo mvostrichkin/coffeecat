@@ -1,3 +1,7 @@
+{
+	acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+}
+
 coffeecat.shop {
 	basic_auth {
 		{$CADDY_AUTH_USERNAME} {$CADDY_AUTH_PASSWORD}
