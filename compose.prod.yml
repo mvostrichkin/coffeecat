@@ -10,7 +10,7 @@ services:
       - CADDY_AUTH_USERNAME=${CADDY_AUTH_USERNAME}
       - CADDY_AUTH_PASSWORD=${CADDY_AUTH_PASSWORD}
     volumes:
-      - ./caddy/Caddyfile: /etc/caddy/Caddyfile
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
     depends_on:
