@@ -6,7 +6,7 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      - DOMAIN_NAME=${DOMAIN_NAME}
+      # - DOMAIN_NAME=${DOMAIN_NAME}
       - CADDY_AUTH_USERNAME=${CADDY_AUTH_USERNAME}
       - CADDY_AUTH_PASSWORD=${CADDY_AUTH_PASSWORD}
     volumes:
@@ -20,9 +20,9 @@ services:
     build: ./svelte-app
     restart: always
     environment:
-      - MONGODB_URI=mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@mongodb:27017/main?authSource=admin
+      # - POSTGRES_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
     depends_on:
-      - mongodb
+      - db
 
 volumes:
   caddy_data:

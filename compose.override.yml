@@ -1,4 +1,4 @@
 services:
-  mongodb:
+  db:
     ports:
-      - "27017:27017"
+      - 5432:5432
