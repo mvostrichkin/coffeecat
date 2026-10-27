@@ -12,7 +12,7 @@
 		{ title: 'Поставки', link: '/invoices' },
 		{ title: 'Списания', link: '/writeoffs' },
 		{ title: 'Закупки', link: '/purchases' },
-		{ title: 'История', link: '/history' }
+		{ title: 'Товары', link: '/items' }
 	];
 </script>
 
