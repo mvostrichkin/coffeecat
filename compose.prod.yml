@@ -20,7 +20,9 @@ services:
     build: ./svelte-app
     restart: always
     environment:
-      - POSTGRES_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - ORIGIN=${ORIGIN}
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET}
     depends_on:
       - db
 
