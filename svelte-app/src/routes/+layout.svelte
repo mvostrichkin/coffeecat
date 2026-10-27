@@ -12,7 +12,8 @@
 		{ title: 'Поставки', link: '/invoices' },
 		{ title: 'Списания', link: '/writeoffs' },
 		{ title: 'Закупки', link: '/purchases' },
-		{ title: 'Товары', link: '/items' }
+		{ title: 'Товары', link: '/items' },
+		{ title: 'Поставщики', link: '/suppliers' }
 	];
 </script>
 
@@ -21,7 +22,7 @@
 </svelte:head>
 
 <div class="app min-h-screen flex flex-col">
-	<div class="body-wrapper flex flex-row items-stretch flex-1">
+	<div class="body-wrapper flex flex-col md:flex-row items-stretch flex-1">
 		<div class="flex flex-col justify-between sidebar-wrapper w-64 text-xl">
 		<div class="menu-wrapper flex flex-1 flex-col justify-center">
 		{#each menuItems as item }
@@ -30,7 +31,6 @@
 			</a>
 		{/each}
 		</div>
-		<div class="text-base p-4">coffeecat</div>
 		</div>
 		<div class="flex-1 body-wrapper m-4 flex flex-col gap-4">
 			{@render children()}
