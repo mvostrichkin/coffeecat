@@ -13,7 +13,7 @@ RUN npm ci
 COPY . .
 
 # Компилируем SvelteKit (Vite создаст папку build/)
-RUN RISK_ONLY_BUILD_TIME_ENV=true npm run build -- --mode production
+RUN npm run --env-file=.env build
 
 # Удаляем devDependencies (оставляем только mongodb/mongoose и т.д.)
 RUN npm prune --production
