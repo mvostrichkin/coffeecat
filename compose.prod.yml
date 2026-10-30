@@ -1,25 +1,29 @@
 services:
-  caddy:
+  webserver:
     image: caddy:2-alpine
     restart: always
     ports:
       - "80:80"
       - "443:443"
-    env_file:
-      - path: ./svelte-app/.env
-        required: true
+    environment:
+      - CADDY_DOMAIN
+      - CADDY_AUTH_USERNAME
+      - CADDY_AUTH_PASSWORD
     volumes:
-      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - .Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
-    depends_on:
-      - svelte-app
-
-  svelte-app:
-    build: ./svelte-app
+  
+  sveltekit:
+    build: .
     restart: always
+    environment:
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/${POSTGRES_DB}
+      - BETTER_AUTH_SECRET
+      - BETTER_AUTH_URL
     depends_on:
-      - db
+      - database
+      - webserver
 
 volumes:
   caddy_data:

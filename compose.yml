@@ -1,12 +1,13 @@
-name: svelte-app
+name: coffeecat
 
 services:
-  db:
+  database:
     image: postgres
     restart: always
-    env_file:
-      - path: ./svelte-app/.env
-        required: true
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
     volumes:
       - pgdata:/var/lib/postgresql
 volumes:

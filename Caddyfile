@@ -1,7 +1,7 @@
-coffeecat.shop {
+{$CADDY_DOMAIN} {
 	basic_auth {
 		{$CADDY_AUTH_USERNAME} {$CADDY_AUTH_PASSWORD}
 	}
 
-	reverse_proxy svelte-app:3000
+	reverse_proxy sveltekit:3000
 }
