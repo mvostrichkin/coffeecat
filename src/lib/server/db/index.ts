@@ -7,4 +7,6 @@ const connectionString = `postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${P
 
 const client = postgres(connectionString);
 
+console.log( POSTGRES_USER );
+
 export const db = drizzle(client, { schema });
