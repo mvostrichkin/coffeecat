@@ -1,10 +1,10 @@
-import { DATABASE_URL } from '$app/env/private';
+import { POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_DB } from '$app/env/private';
 import postgres from 'postgres';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import * as schema from './schema';
 
-if (!DATABASE_URL) throw new Error('DATABASE_URL is not set');
+const connectionString = `postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/${POSTGRES_DB}`;
 
-const client = postgres(DATABASE_URL);
+const client = postgres(connectionString);
 
 export const db = drizzle(client, { schema });
