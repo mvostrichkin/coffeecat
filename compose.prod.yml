@@ -18,7 +18,10 @@ services:
     build: .
     restart: always
     environment:
-      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/${POSTGRES_DB}
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_HOST
+      - POSTGRES_DB
       - BETTER_AUTH_SECRET
       - BETTER_AUTH_URL
     depends_on:
