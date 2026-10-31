@@ -9,9 +9,5 @@ export const variables = defineEnvVars({
 	BETTER_AUTH_URL: {
 		description: 'The app origin (base URL), e.g. `http://localhost:5173`.',
 		optional: building
-	},
-	BETTER_AUTH_SECRET: {
-		description: 'Secret used to sign tokens. For production use 32 characters generated with high entropy. See [Better Auth installation](https://www.better-auth.com/docs/installation).',
-		optional: building 
 	}
 });
