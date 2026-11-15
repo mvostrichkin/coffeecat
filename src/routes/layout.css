@@ -3,8 +3,10 @@
 
 :root {
     --color-brand: #ff4d16;
-    --color-canvas: #e9e9e9;
+    --color-canvas: #e8e8e8;
+    --color-accent-1: #fff5e7;
     --color-border: #c5c5c5;
+    --color-border-attention: #a50b38;
 
     --font-color-accent: rgb(163, 0, 100);
 }

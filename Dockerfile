@@ -1,4 +1,3 @@
-# === Этап 1: Сборка приложения ===
 FROM node:26-alpine AS builder
 WORKDIR /app
 COPY package*.json ./

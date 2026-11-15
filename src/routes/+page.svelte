@@ -28,41 +28,34 @@
 </script>
 
 <div class="content content-main grid grid-cols-1 lg:grid-cols-3 gap-4">
-  <div class="writeoffs-section flex flex-col gap-2 border bg-white p-4 rounded-md">
-    <div class="text-lg font-bold">
-      Списание на сегодня
+  <div class="mainpage-section writeoffs-section flex flex-col gap-2 border border-(--color-border-attention) bg-(--color-canvas) p-4 rounded-2xl shadow-2xl">
+    <div class="text-lg font-bold flex flex-col gap-2">
+          <!-- <div class="writeoffs-section__number text-white font-bold bg-(--font-color-accent) p-2 rounded-lg">Обратите внимание</div> -->
+          <div>У <span class="writeoffs-section__number text-(--font-color-accent) font-bold">2</span> товаров сегодня истекает срок годности.</div>
     </div>
     <div>
-      <span class="writeoffs-section__number font-bold">Не проведено.</span><br>У <span class="writeoffs-section__number font-bold">2</span> товаров сегодня истекает срок годности.
     </div>
     <div class="font-bold text-xl underline">Открыть</div>
   </div>
-  <div class="events-history-section col-span-2 flex flex-col gap-2 flex-1 p-4 border bg-white rounded-md">
+    <div class="mainpage-section invoices-section col-span-1 flex flex-col flex-1 p-4 border border-(--color-border) bg-(--color-canvas) rounded-2xl shadow-lg">
+    <span class="">Поставок сегодня не было</span>
+    <div class="font-bold text-xl underline">Новая поставка</div>
+  </div>
+  <div class="mainpage-section events-history-section col-span-2 row-span-2 flex flex-col gap-2 flex-1 p-4 border border-(--color-border) bg-(--color-canvas) rounded-2xl shadow-lg">
     <span class="text-lg font-bold">Последние события</span>
     {#each lastEvents as event }
       <div class="event flex flex-row gap-2">
-        <div class="event-type font-bold">{event.type}</div>
-        <div class="event-description flex-1">{event.description}</div>
+        <div class="text-(--font-color-accent) font-bold">{event.type}</div>
+        <div class="flex-1">{event.description}</div>
       </div>      
     {/each}
     <div class="font-bold text-xl underline">Открыть</div>
   </div>
+
 </div>
 
 <style>
-  /* .content-main {
-
-  } */
-
-  .event-type {
-    color: var(--font-color-accent);
-  }
-
-  .writeoffs-section__status {
-    color: var(--font-color-accent);
-  }
-
-  .writeoffs-section__number {
-    color: var(--font-color-accent);
+  .mainpage-section {
+    /* background-color: var(--color-accent-1); */
   }
 </style>
