@@ -2,7 +2,6 @@
 	import './layout.css';
 	import favicon from '#lib/assets/favicon.svg';
 	import type { LayoutProps } from './$types';
-  import Header from '#lib/components/Header.svelte';
   import Sidebar from '#lib/components/Sidebar.svelte';
 
 	let { children }: LayoutProps = $props();
@@ -13,7 +12,6 @@
 </svelte:head>
 
 <div class="app min-h-screen flex flex-col">
-  <Header />
   <div class="body-wrapper flex-1 flex flex-col md:flex-row">
     <Sidebar />
     <div class="content-wrapper md:max-h-screen overflow-y-auto flex-1 h-2000 p-4 pb-8 md:p-8">
