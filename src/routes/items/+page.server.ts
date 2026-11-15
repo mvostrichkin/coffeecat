@@ -1,4 +1,4 @@
-import { getItems } from '#lib/server/data.ts';
+import { getItems } from '#lib/server/itemsDataFetcher.ts';
 
 export const load = async () => {
   const items = await getItems();
