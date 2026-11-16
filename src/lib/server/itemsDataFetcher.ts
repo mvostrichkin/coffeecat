@@ -16,3 +16,8 @@ export const addItem = async (item: InferInsertModel<typeof items>) => {
   const result = await db.insert(items).values(item).returning({ insertedId: items.id, name: items.name });;
   return result; 
 }
+
+export const deleteItem = async (id: number) => {
+  const result = await db.delete(items).where(eq(items.id, id)).returning({ deletedName: items.name });
+  return result;
+}
