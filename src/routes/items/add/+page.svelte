@@ -18,17 +18,17 @@
     <label for="id">
       ID:
     </label>
-    <input type="number" name="id" required class="border-green-500 border-2 rounded-full p-2">
+    <input type="number" name="id" required placeholder="ID во внешней системе" class="border-gray-500 border-2 rounded-full px-4 py-2">
     
     <label for="name">
       Наименование:
     </label>
-    <input type="text" name="name" required class="border-green-500 border-2 rounded-full p-2">
+    <input type="text" name="name" required placeholder="Картошечка с пюрешкой" class="border-gray-500 border-2 rounded-full px-4 py-2">
     
     <label for="price">
       Цена:
     </label>
-    <input type="text" name="price" required class="border-green-500 border-2 rounded-full p-2">
-    <button class="rounded-full bg-green-500 px-4 py-2 font-bold text-white text-lg">Добавить товар</button>
+    <input type="text" name="price" required placeholder="123.45 (копейки через точку)" class="border-gray-500 border-2 rounded-full px-4 py-2">
+    <button class="rounded-full bg-gray-700 px-4 py-2 font-bold text-white text-lg">Добавить товар</button>
   </form>
 </div>
