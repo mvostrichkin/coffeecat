@@ -22,9 +22,9 @@
   {/if}
 
   {#each items as item}
-    <a class="flex flex-row items-center gap-2 bg-white rounded-full p-4" href={`/items/${item.id}`}>
+    <a class="flex flex-row flex-wrap items-center gap-2 bg-white rounded-xl p-4" href={`/items/${item.id}`}>
       <div class="bg-gray-700 rounded-full px-4 text-white font-bold">ID: {item.id}</div>
-      <div class="flex-1">{item.name}</div>
+      <div class="flex">{item.name}</div>
       <div class="bg-yellow-200 rounded-full px-4 font-bold">{item.sellingPrice} руб.</div>
     </a>
   {/each}
