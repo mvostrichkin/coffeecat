@@ -1,4 +1,4 @@
-import { getSupplierById, deleteSupplier } from '#lib/server/itemsDataFetcher.ts';
+import { getSupplierById, deleteSupplier, archiveSupplier } from '#lib/server/itemsDataFetcher.ts';
 import type { DrizzleQueryError } from 'drizzle-orm';
 import type { Actions } from './$types';
 import { redirect } from '@sveltejs/kit';
@@ -17,5 +17,10 @@ export const actions = {
     }
 
     redirect(303, `/suppliers`);
+  },
+  archiveSupplier: async({ params, request }) => {
+    const data = await request.formData();
+    console.log(data.get('archive'));
+    const result = await archiveSupplier(parseInt(params.slug), data.get('archive') !== null);
   }
 } satisfies Actions;

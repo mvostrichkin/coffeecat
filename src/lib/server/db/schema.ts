@@ -10,6 +10,7 @@ import { sql } from "drizzle-orm";
 
 export const items = pgTable("items", {
   id: serial("id").primaryKey(),
+  external_id: integer("external_id").notNull(),
   name: text("name").notNull(),
   sellingPrice: numeric("selling_price", { precision: 6, scale: 2 }).notNull(),
 });
@@ -26,4 +27,5 @@ export const suppliers = pgTable("suppliers", {
   id: serial('id').primaryKey(),
   name: text('name').notNull(),
   contact_info: text('contact_info'),
+  status: text('status').notNull().default('active'),
 });

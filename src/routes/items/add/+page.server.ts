@@ -9,7 +9,7 @@ export const actions = {
       const price = data.get('price');
 
       const result = await addItem({
-        // id: Number(id),
+        external_id: Number(id),
         name: String(name),
         sellingPrice: String(price)
       });

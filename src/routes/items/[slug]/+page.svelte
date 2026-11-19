@@ -8,7 +8,7 @@
 
 <div class="flex flex-col gap-4 border-2 border-gray-300 rounded-xl p-4">
   <p class="text-2xl font-bold">{item.name}</p>
-  <p class="text-xl">ID: <span class="font-bold">{item.id}</span></p>
+  <p class="text-xl">Внешний ID: <span class="font-bold">{item.external_id}</span></p>
   <p class="text-xl">Цена продажи: <span class="font-bold">{item.sellingPrice}</span> рублей</p>
   <div class="text-xl">
     Здесь могла быть полезная информация о движении товара 😒
