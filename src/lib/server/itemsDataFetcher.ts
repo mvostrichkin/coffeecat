@@ -1,6 +1,6 @@
 import { db } from '#lib/server/db/index.ts';
 import { eq, type InferInsertModel, sql } from 'drizzle-orm';
-import { items, suppliers } from '#lib/server/db/schema.ts';
+import { items, suppliers, invoices } from '#lib/server/db/schema.ts';
 
 // Items
 export const getItems = async () => {
@@ -50,4 +50,15 @@ export const deleteSupplier = async (id: number) => {
 export const archiveSupplier = async (id: number, archive: boolean) => {
   const result = await db.update(suppliers).set({ status: archive ? 'archived' : 'active' }).where(eq(suppliers.id, id)).returning({ updatedStatus: suppliers.status });
   return result;
+}
+
+// Invoices
+export const getInvoices = async () => {
+  const result = await db.select().from(invoices);
+  return result;
+}
+
+export const getInvoiceById = async (id: number) => {
+  const result = await db.select().from(invoices).where(eq(invoices.id, id)).limit(1);
+  return result[0];
 }

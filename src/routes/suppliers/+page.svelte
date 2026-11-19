@@ -23,8 +23,10 @@
 
   {#each suppliers as supplier}
     <a class="flex flex-row flex-wrap items-center gap-2 bg-white rounded-xl p-4" href={`/suppliers/${supplier.id}`}>
-      <div class="bg-gray-700 rounded-full px-4 text-white font-bold">ID: {supplier.id}</div>
-      <div class="flex">{supplier.name}</div>
+      <div class="flex-1">{supplier.name}</div>
+      {#if supplier.status === 'archived'}
+        <div class="text-gray-500 px-4 font-bold ">В архиве</div>
+      {/if}
     </a>
   {/each}
 </div>

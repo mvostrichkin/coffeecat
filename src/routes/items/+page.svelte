@@ -23,9 +23,9 @@
 
   {#each items as item}
     <a class="flex flex-row flex-wrap items-center gap-2 bg-white rounded-xl p-4" href={`/items/${item.id}`}>
-      <div class="bg-orange-500 rounded-full px-4 text-white font-bold">ID {item.external_id}</div>
-      <div class="flex-1">{item.name}</div>
-      <div class="bg-yellow-200 rounded-full px-4 font-bold">{item.sellingPrice} руб.</div>
+      <div class="font-bold text-gray-500"># {item.external_id}</div>
+      <div class="flex-1 ">{item.name}</div>
+      <div class="font-bold">🪙 {item.sellingPrice} руб.</div>
     </a>
   {/each}
 </div>
