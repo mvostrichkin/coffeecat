@@ -15,6 +15,13 @@ export const items = pgTable("items", {
   sellingPrice: numeric("selling_price", { precision: 6, scale: 2 }).notNull(),
 });
 
+export const stocks = pgTable("stocks", {
+  id: serial("id").primaryKey(),
+  item_id: integer('item_id').notNull().references(() => items.id, { onDelete: 'cascade' }),
+  quantity: integer('quantity').notNull().default(0),
+  updated_at: timestamp({ withTimezone: true, mode: 'date' }).notNull().default(sql`now()`),
+});
+
 export const invoices = pgTable("invoices", {
   id: serial("id").primaryKey(),
   created_at: timestamp({ withTimezone: true, mode: 'date' }).notNull().default(sql`now()`),

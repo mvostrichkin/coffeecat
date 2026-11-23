@@ -1,5 +1,5 @@
 import { db } from '#lib/server/db/index.ts';
-import { eq, type InferInsertModel, sql } from 'drizzle-orm';
+import { eq, type InferInsertModel, sql, getTableColumns } from 'drizzle-orm';
 import { items, suppliers, invoices } from '#lib/server/db/schema.ts';
 
 // Items
@@ -54,11 +54,11 @@ export const archiveSupplier = async (id: number, archive: boolean) => {
 
 // Invoices
 export const getInvoices = async () => {
-  const result = await db.select().from(invoices);
+  const result = await db.select({ ...getTableColumns(invoices), supplierName: suppliers.name }).from(invoices).leftJoin(suppliers, eq(invoices.supplier_id, suppliers.id));
   return result;
 }
 
 export const getInvoiceById = async (id: number) => {
-  const result = await db.select().from(invoices).where(eq(invoices.id, id)).limit(1);
+  const result = await db.select({ ...getTableColumns(invoices), supplierName: suppliers.name }).from(invoices).leftJoin(suppliers, eq(invoices.supplier_id, suppliers.id)).where(eq(invoices.id, id)).limit(1);
   return result[0];
 }

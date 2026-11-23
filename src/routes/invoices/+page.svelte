@@ -4,6 +4,8 @@
   let { data }: { data: PageData } = $props();
 
   let invoices = $derived(data.invoices);
+
+  console.log('invoices', invoices);
 </script>
 
 <div class="flex flex-col gap-4">
@@ -23,7 +25,8 @@
 
   {#each invoices as invoice}
     <a class="flex flex-row flex-wrap items-center gap-2 bg-white rounded-xl p-4" href={`/invoices/${invoice.id}`}>
-      <div class="flex-1 font-bold text-gray-500"># {invoice.id}</div>
+      <div class="flex font-bold text-gray-500"># {invoice.id}</div>
+      <div class="flex-1 font-bold ">{invoice.supplierName}</div>
       {#if invoice.status === 'posted'}
         <div class="text-green-600 font-bold">Проведена</div>
       {:else if invoice.status === 'draft'}
