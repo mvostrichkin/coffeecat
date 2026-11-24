@@ -1,6 +1,6 @@
 import { db } from '#lib/server/db/index.ts';
 import { eq, type InferInsertModel, sql, getTableColumns } from 'drizzle-orm';
-import { items, suppliers, invoices } from '#lib/server/db/schema.ts';
+import { items, suppliers, invoices, invoiceItems, stocks } from '#lib/server/db/schema.ts';
 
 // Items
 export const getItems = async () => {
@@ -9,7 +9,7 @@ export const getItems = async () => {
 }
 
 export const getItemById = async (id: number) => {
-  const result = await db.select().from(items).where(eq(items.id, id)).limit(1);
+  const result = await db.select({ ...getTableColumns(items), stock: stocks.quantity }).from(items).where(eq(items.id, id)).leftJoin(stocks, eq(items.id, stocks.item_id)).limit(1);
   return result[0];
 }
 
@@ -54,11 +54,23 @@ export const archiveSupplier = async (id: number, archive: boolean) => {
 
 // Invoices
 export const getInvoices = async () => {
-  const result = await db.select({ ...getTableColumns(invoices), supplierName: suppliers.name }).from(invoices).leftJoin(suppliers, eq(invoices.supplier_id, suppliers.id));
+  const result = await db.select().from(invoices);
   return result;
 }
 
 export const getInvoiceById = async (id: number) => {
-  const result = await db.select({ ...getTableColumns(invoices), supplierName: suppliers.name }).from(invoices).leftJoin(suppliers, eq(invoices.supplier_id, suppliers.id)).where(eq(invoices.id, id)).limit(1);
-  return result[0];
+  const invoiceData = await db.select().from(invoices).limit(1);
+  const invoiceItemsData = await db.select().from(invoiceItems).where(eq(invoiceItems.invoice_id, id));
+  return { invoice: invoiceData[0], items: invoiceItemsData };
+}
+
+export const addInvoice = async (invoice: any) => {
+const result = await db.insert(invoices).values({
+  received_at: invoice.received_at,
+  supplier_id: 6,
+  supplier_name_snapshot: 'ООО Сенсорика',
+  items_count_snapshot: 2,
+  total_price_snapshot: '50'
+});
+  return result; 
 }

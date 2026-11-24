@@ -27,6 +27,9 @@ export const invoices = pgTable("invoices", {
   created_at: timestamp({ withTimezone: true, mode: 'date' }).notNull().default(sql`now()`),
   received_at: timestamp({ withTimezone: true, mode: 'date' }).notNull().default(sql`now()`),
   supplier_id: integer('supplier_id').notNull().references(() => suppliers.id, { onDelete: 'restrict' }),
+  supplier_name_snapshot: text('supplier_name_snapshot').notNull(),
+  items_count_snapshot: integer('items_count_snapshot').notNull(),
+  total_price_snapshot: numeric("total_price_snapshot", { precision: 7, scale: 2 }).notNull(),
   status: text("status").notNull().default('draft'),
 });
 
@@ -36,6 +39,7 @@ export const invoiceItems = pgTable("invoice_items", {
   item_id: integer('item_id').notNull().references(() => items.id, { onDelete: 'restrict' }),
   quantity: integer('quantity').notNull(),
   unit_price: numeric("unit_price", { precision: 6, scale: 2 }).notNull(),
+  name_snapshot: text('name_snapshot').notNull().default('name')
 });
 
 export const suppliers = pgTable("suppliers", {
