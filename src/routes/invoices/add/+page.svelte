@@ -7,12 +7,14 @@
     external_id: string;
     sellingPrice: number;
     quantity?: number;
+    visible?: boolean;
   };
 
   let { form, data }: PageProps & PageData = $props();
 
   const suppliers = $derived(data.suppliers);
-  const items = $derived(data.items);
+  let it = $derived<formItem[]>(data.items);
+  let items = $state(it);
 
   console.log(items);
 
@@ -20,7 +22,7 @@
   const localTime = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
   const localTimeString = localTime.toISOString().slice(0, 16);
 
-  const formItems = $state<formItem[]>([]);
+  let formItems = $state<formItem[]>([]);
 
   function addItem(item: formItem) {
     const existingItem = formItems.find((formItem) => formItem.id === item.id);
@@ -28,6 +30,9 @@
     if (existingItem) {
       existingItem.quantity = existingItem.quantity ? existingItem.quantity + 1 : 1;
     } else {
+      const availableItem = items.find((availableItem) => availableItem.id === item.id);
+      availableItem.visible = availableItem.visible ? !availableItem.visible : false;
+      console.log(`availableItem: ${JSON.stringify(availableItem)}`);
       item.quantity = 1;
       formItems.push(item);
     }
@@ -71,7 +76,7 @@
     <input type="hidden" name="items" value="{JSON.stringify(formItems)}">
 
     {#each items as item}
-        <div onclick={() => { addItem(item)}}>{item.name}</div>
+        <div onclick={() => { addItem(item)}}>{item.name}{item.visible}</div>
     {/each}
 
       {#if formItems.length > 0}
